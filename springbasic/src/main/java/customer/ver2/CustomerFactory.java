@@ -11,9 +11,9 @@ public class CustomerFactory {
 		//CustomerDAO dao = getCustomerDAO();
 		//CustomerDAO와 CustomerService를 직접 만들어서 리턴하고 있지만 주로 설정정보를 통해서 객체를
 		//자동으로 만들 수 있도록 작업(코드를 가볍게 살펴보기 위해서 직접 만들어서 리턴)
-		CustomerDAO dao = new MyBatisCustomerDAO();
+//		CustomerDAO dao = new MyBatisCustomerDAO();
 		
-		CustomerService service = new CustomerServiceImpl(dao);
+		CustomerService service = new CustomerServiceImpl(getCustomerDAO());
 		return service;
 	}
 }

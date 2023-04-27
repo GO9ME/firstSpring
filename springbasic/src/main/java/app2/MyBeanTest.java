@@ -7,12 +7,12 @@ public class MyBeanTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		MyBean obj = new MyBeanStyleB();
-		MyBean obj2 = new MyBeanStyleA();
+		MyBean obj = new MyBeanStyleA();
+//		MyBean obj2 = new MyBeanStyleA();
 		run(obj);
 		show(obj);
-		run(obj2);
-		show(obj2);
+//		run(obj2);
+//		show(obj2);
 	}
 	public static void run( MyBean obj) {
 		System.out.println("=========================");

@@ -1,6 +1,6 @@
 package board_point.ver2;
 
-import customer.CustomerDTO;
+import customer.ver2.CustomerDTO;
 
 public class PointImpl implements AbstractPoint {
 

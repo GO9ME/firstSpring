@@ -5,10 +5,12 @@ import customer.ver2.MyBatisCustomerDAO;
 
 public class BoardFactory {
 	public AbstractPoint getAbstractPoint() {
-		return new OtherPointImpl();
+		return new PointImpl();
 	}
 	public BoardService getBoardService() {
 		CustomerDAO dao = new MyBatisCustomerDAO();
+//		AbstractPoint ap = getAbstractPoint();
 		return new BoardServiceImpl(dao,getAbstractPoint());
+//		return new BoardServiceImpl(dao,ap);
 	}
 }
