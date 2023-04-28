@@ -20,6 +20,7 @@
 	<h3>
 		<a href="/springmvc/gugu.do">구구단</a>
 	</h3>
+	<h3><a href="/springmvc/pro.do">이제프로젝트를 어떻게 할까요?</a></h3>
 
 </body>
 </html>

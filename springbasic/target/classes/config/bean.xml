@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="mybean" class="app3.MyBeanStyleA"/>
+	<bean id="mybean" class="app3.MyBeanStyleB" scope="prototype"/>
 	<!-- <bean id="mybeanB" class="app3.MyBeanStyleB"/> -->
+	<bean id="account" class="exam02.Account"/>
 </beans>

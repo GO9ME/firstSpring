@@ -1,17 +1,27 @@
 package app4;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+import app3.MyBean;
 
 /*
 
 */
 public class MyBeanTest_spring_ApplicationContext {
 	public static void main(String[] args) {
-		// 1. IoC컨테이너를 생성 - Application Context
-		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/bean.xml");
-		// 원하는 객체를 loop
-		MyBean obj =  (MyBean) factory.getBean("mybean"); // 빈을 등록할때 정의한 id 명을 사용
+		// 1. xml 파싱
+		Resource res = new ClassPathResource("/config/bean.xml");
+		// 2. 스프링이 제공한 IoC컨테이너(객체를 생성하고 관리하는 기능을 갖고 있는 클래스)를 생성
+		BeanFactory factory = new XmlBeanFactory(res);
+		// 3. 원하는 객체를 look up
+		MyBean obj = (MyBean) factory.getBean("mybean");
+		
+		
 		run(obj);
 		show(obj);
 	}

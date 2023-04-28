@@ -1,11 +1,14 @@
 package app3;
 
 public class MyBeanStyleA implements MyBean{
-	
+	public MyBeanStyleA() {
+		// TODO Auto-generated constructor stub
+		System.out.println("MyBeanStyleA ìƒì„±");
+	}
 	@Override
 	public void testHello(String name) {
 		// TODO Auto-generated method stub
-		System.out.println("¾È³çÇÏ¼¼¿ä" + name + "´Ô!!!");
+		System.out.println("ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½" + name + "ï¿½ï¿½!!!");
 	}
 	
 }

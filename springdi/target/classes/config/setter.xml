@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="dao" class="di.setter01.MemberDAO" />
+	<bean id="insa" class="di.setter01.InsaImpl">
+		<!-- property태그의 name 속성은 setter메소드의 set을 빼고 첫글자를 소문자로 변경한 이름 맴버변수 명과 동일한 
+			이름 -->
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean id="logic" class="di.setter02.LogicImpl" />
+	<bean id="service" class="di.setter02.ServiceImpl">
+		<property name="name" value="BTS"/>
+		<property name="msg" value="멋있다"/>
+		<property name="logic" ref="logic"/>
+	</bean>
+
+	<bean id="dice" class="di.setter03.Dice" />
+	<bean id="player" class="di.setter03.Player">
+		<property name="d" ref="dice"/>
+		<property name="totalValue" value="0"/>
+	</bean>
+
+
+</beans>
