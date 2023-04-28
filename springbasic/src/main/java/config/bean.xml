@@ -5,6 +5,4 @@
 
 	<bean id="mybean" class="app3.MyBeanStyleA"/>
 	<!-- <bean id="mybeanB" class="app3.MyBeanStyleB"/> -->
-	<bean id="lgtv" class="exam01.LgTV"/>
-	<bean id="sstv" class="exam01.SamsungTV"/>
 </beans>
