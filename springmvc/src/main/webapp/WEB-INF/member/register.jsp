@@ -20,7 +20,7 @@
 					<a href="/serverweb/mvc/list.do">
 						<h1>회원목록보기</h1>
 					</a>
-					<form role="form" class="form-horizontal" action="/serverweb/mvc/insert.do" method="POST" name="myform">
+					<form role="form" class="form-horizontal" action="/springmvc/mvc/insert.do" method="POST" name="myform">
 						<fieldset>
 							<div id="legend">
 								<legend>아래 양식을 작성해주세요.</legend>

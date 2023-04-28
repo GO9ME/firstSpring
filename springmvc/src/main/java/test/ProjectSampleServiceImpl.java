@@ -9,10 +9,17 @@ public class ProjectSampleServiceImpl implements ProjectSampleService {
 	@Autowired
 	ProjectSampleDAO dao;
 	
+	public ProjectSampleServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	@Override
-	public void servicetest() {
+	public void servicetest(EmpDTO user) {
 		// TODO Auto-generated method stub
 		System.out.println("나 service");
-		dao.test();
+		dao.insert(user);
 	}
+
+
 }
