@@ -1,5 +1,5 @@
 package test;
 
 public interface ProjectSampleService {
-	void servicetest(EmpDTO user);
+	void servicetest();
 }
