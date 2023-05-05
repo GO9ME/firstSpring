@@ -13,7 +13,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-2 sidenav">
-				<jsp:include page="../layout/servlet_menu.jsp" />
+				<jsp:include page="../layout/emp_menu.jsp" />
 			</div>
 			<div class="col-lg-10">
 				<div class="container-fluid">

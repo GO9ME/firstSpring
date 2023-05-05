@@ -1,4 +1,4 @@
-package test;
+package kr.multi.erp.member;
 
 public class EmpDTO {
 	private String deptno;
