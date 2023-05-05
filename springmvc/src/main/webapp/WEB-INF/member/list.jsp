@@ -1,3 +1,4 @@
+<%@page import="test.EmpDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,8 +27,8 @@
 						<th>delete</th>
 					</tr>
 
-<%-- 					<%
-					ArrayList<EmpDTO> list = (ArrayList<EmpDTO>) request.getAttribute("emplist");
+ 					<%
+					ArrayList<EmpDTO> list = (ArrayList<EmpDTO>) request.getAttribute("userlist");
 					int size = list.size();
 					for (int i = 0; i < size; i++) {
 					%>
@@ -37,7 +38,7 @@
 						EmpDTO item = list.get(i);
 						%>
 						
-						<td><a href='/serverweb/mvc/read.do?id=<%=list.get(i).getId()%>'><%=item.getDeptno()%></a></td>
+						<td><a href='/springmvc/mvc/read.do?id=<%=list.get(i).getId()%>&state=READ'><%=item.getDeptno()%></a></td>
 						
 						<td><%=item.getName()%></td>
 						<td><%=item.getId()%></td>
@@ -47,14 +48,14 @@
 						<td><%=item.getGrade()%></td>
 						<td>
 						
-							<a href='/serverweb/mvc/delete.do?id=<%=list.get(i).getId()%>'>삭제</a>
+							<a href='/springmvc/mvc/delete.do?id=<%=list.get(i).getId()%>'>삭제</a>
 						</td>
 
 					</tr>
 					
 					<%
 					}
-					%> --%>
+					%>
 				</table>
 			</div>
 		</div>

@@ -39,7 +39,7 @@
 	<context:component-scan
 		base-package="com.mutli.springmvc" />
 	<context:component-scan
-		base-package="kr.multi.erp.member" />
+		base-package="kr.multi.erp" />
 	<context:component-scan base-package="main" />
 	<context:component-scan base-package="test" />
 
@@ -48,14 +48,21 @@
 		<beans:property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<beans:property name="url"
-			value="jdbc:mysql://localhost:3306/jdbc?serverTimezone=UTC"/>
+			value="jdbc:mysql://127.0.0.1:3306/jdbc?serverTimezone=UTC"/>
 		<beans:property name="username" value="exam" />
 		<beans:property name="password" value="1234" />
 	</beans:bean>
 	
 	<beans:bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:constructor-arg ref="dataSource"/>
+	</beans:bean> 
+	
+
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="4000000" />
 	</beans:bean>
+	
 
 
 </beans:beans>
