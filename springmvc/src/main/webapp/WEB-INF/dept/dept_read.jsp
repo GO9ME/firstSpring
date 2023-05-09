@@ -1,4 +1,4 @@
-<%@page import="kr.multicampus.erp.dept.DeptDTO"%>
+<%@page import="kr.multi.erp.dept.DeptDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -16,7 +16,7 @@
 </head>
 <body>
 	<%
-		DeptDTO dept = (DeptDTO)request.getAttribute("dept");
+	DeptDTO dept = (DeptDTO) request.getAttribute("dept");
 	%>
 	<jsp:include page="../main/top.jsp" />
 	<div class="container-fluid">
@@ -34,7 +34,7 @@
 							<!-- 부서코드 -->
 							<label class="control-label col-sm-2" for="deptcode">부서코드</label>
 							<div class="col-sm-3">
-							<%= dept.getDeptno() %>
+								<%= dept.getDeptno() %>
 							</div>
 						</div>
 
@@ -44,6 +44,7 @@
 							<!-- 부서명-->
 							<label class="control-label col-sm-2" for="name">부서명</label>
 							<div class="col-sm-3">
+								<!-- 부서명을 이곳에 출력하세요 -->
 								<%= dept.getDeptname() %>
 							</div>
 						</div>
@@ -51,7 +52,8 @@
 							<!-- 아이디-->
 							<label class="control-label col-sm-2" for="id">부서생성일</label>
 							<div class="col-sm-3">
-							<%= dept.getDeptStartDay() %>
+								<!-- 부서생성일 이곳에 출력하세요 -->
+								<%= dept.getDeptStartDay() %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -76,7 +78,7 @@
 							<label class="control-label col-sm-2" for="point">상위부서번호</label>
 							<div class="col-sm-3">
 								<!-- 상위부서번호를 이곳에 출력하세요 -->
-								<%= dept.getDeptuppercode()%>
+								<%= dept.getDeptuppercode() %>
 							</div>
 						</div>
 						<div class="form-group">
@@ -115,7 +117,7 @@
 							<!-- Button -->
 							<div class="col-sm-3 col-sm-offset-2">
 								<input type="button" value="수정" class="btn btn-success"
-								 onclick="location.href='/rn2rg2/dept/read.do?deptno=<%= dept.getDeptno()%>&state=UPDATE'" />
+									onclick="location.href='/springmvc/dept/read.do?deptno=<%= dept.getDeptno() %>&state=UPDATE'" />
 							</div>
 						</div>
 					</fieldset>

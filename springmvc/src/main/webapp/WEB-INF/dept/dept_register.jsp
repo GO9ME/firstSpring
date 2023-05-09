@@ -15,7 +15,8 @@
 			</div>
 			<div class="col-lg-10">
 				<form role="form" class="form-horizontal"
-					action="/springmvc/dept/insert.do" method="POST" name="myform">
+					action="/springmvc/dept/insert.do" method="POST" name="myform"
+					enctype="multipart/form-data">
 					<fieldset>
 						<div id="legend">
 							<legend>아래 양식을 작성해주세요.</legend>
@@ -30,8 +31,6 @@
 
 							</div>
 						</div>
-
-
 
 						<div class="form-group">
 							<!-- 부서명-->
@@ -49,7 +48,6 @@
 							<div class="col-sm-3">
 								<input type="text" id="deptStartDay" name="deptStartDay"
 									placeholder="부서시작일" class="form-control" minlength="10">
-
 							</div>
 						</div>
 						<div class="form-group">
@@ -149,6 +147,53 @@
 
 							</div>
 						</div>
+						
+						<div class="form-group">
+							<div class="col-md-2 text-right">
+								<label for="files" class="control-label">파일1</label>
+							</div>
+							<div class="col-md-8">
+								<input type="file" class="form-control input-lg" name="files"
+									id="files" placeholder="파일선택" multiple="multiple">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-2 text-right">
+								<label for="title" class="control-label">파일2</label>
+							</div>
+							<div class="col-md-8">
+								<input type="file" class="form-control input-lg" name="files"
+									id="title" placeholder="파일선택">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-2 text-right">
+								<label for="files" class="control-label">파일3</label>
+							</div>
+							<div class="col-md-8">
+								<input type="file" class="form-control input-lg" name="files"
+									id="files" placeholder="파일선택">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-2 text-right">
+								<label for="files" class="control-label">파일4</label>
+							</div>
+							<div class="col-md-8">
+								<input type="file" class="form-control input-lg" name="files"
+									id="files" placeholder="파일선택">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-2 text-right">
+								<label for="title" class="control-label">파일5</label>
+							</div>
+							<div class="col-md-8">
+								<input type="file" class="form-control input-lg" name="files"
+									id="title" placeholder="파일선택">
+							</div>
+						</div>
+
 
 						<div class="form-group">
 							<!-- Button -->

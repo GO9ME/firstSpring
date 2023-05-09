@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,23 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="../main/top.jsp" />
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-2 sidenav">
-				<jsp:include page="../layout/servlet_menu.jsp" />
-			</div>
-			<%
-			//공유된 데이터 꺼내기
-			String name = (String) request.getAttribute("insertuser");
-			System.out.println(name);
-			%>
-			<h1>자바나라 쇼핑몰</h1>
-			<hr />
-			<h2><%=name%>님 가입을 축하합니다.!!!
-			</h2>
-		</div>
-	</div>
+	<%
+	// 공유된 데이터 꺼내기. 꺼낸건 Object 이므로 String으로 캐스킹해야됨.
+	String name = (String) request.getAttribute("insertUser");
+	
+	%>
 
+	<h1>자바나라쇼핑몰</h1>
+	<hr />
+	<h2><%= name %>님의 가입 환영합니다.</h2>
 </body>
 </html>

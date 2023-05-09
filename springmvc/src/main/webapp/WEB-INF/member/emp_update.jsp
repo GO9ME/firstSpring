@@ -1,4 +1,4 @@
-<%@page import="test.EmpDTO"%>
+<%@page import="kr.multi.erp.member.EmpDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -13,11 +13,11 @@
 </head>
 <body>
 	<%
-	EmpDTO user = (EmpDTO) request.getAttribute("userdata");
+		EmpDTO user = (EmpDTO) request.getAttribute("user");
 	%>
 	<div class="container-fluid">
 		<form role="form" class="form-horizontal"
-		action="/springmvc/mvc/update.do" method="post">
+		action="/springmvc/emp/update.do" method="post">
 				<fieldset>
 					<div id="legend">
 						<legend>아래 양식을 작성해주세요.</legend>
@@ -26,7 +26,7 @@
 						<!-- 부서코드 -->
 						<label class="control-label col-sm-2" for="deptcode">부서코드</label>
 						<div class="col-sm-3">
-						<%=user.getDeptno()%>
+							<%= user.getDeptno() %>
 						</div>
 					</div>
 
@@ -37,7 +37,7 @@
 						<label class="control-label col-sm-2" for="name">성명</label>
 						<div class="col-sm-3">
 							<!-- 성명을 이곳에 출력하세요 -->
-							<%=user.getName()%>
+							<%= user.getName() %>
 						</div>
 					</div>					
 					<div class="form-group">
@@ -45,9 +45,8 @@
 						<label class="control-label col-sm-2" for="id">아이디</label>
 						<div class="col-sm-3">
 							<!-- 아이디를 이곳에 출력하세요 -->
-							<input type="hidden" name="id" value="<%=user.getId() %>">>
-							<%=user.getId()%>
-							
+							<%= user.getId() %>
+							<input type="hidden" name="id" value="<%= user.getId() %>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,9 +54,8 @@
 						<label class="control-label col-sm-2" for="addr">주소</label>
 						<div class="col-sm-3">
 							<!-- 주소를 이곳에 출력하세요 -->
-							<%=user.getAddr()%>
 							<input type="text"
-							 value="" name="addr"/>
+							 value="<%= user.getAddr() %>" name="addr"/>
 						</div>
 					</div>
 
@@ -73,9 +71,7 @@
 						<label class="control-label col-sm-2" for="point">포인트</label>
 						<div class="col-sm-3">
 							<!-- 포인트를 이곳에 출력하세요 -->
-							<%=user.getPoint()%>
-							<input type="text" 
-							value="" name="point"/>
+							<%= user.getPoint() %>
 						</div>
 					</div>
 					<div class="form-group">
@@ -83,9 +79,8 @@
 						<label class="control-label col-sm-2" for="grade">등급</label>
 						<div class="col-sm-3">
 							<!-- 등급을 이곳에 출력하세요 -->
-							<%=user.getGrade()%>
 							<input type="text" 
-							value="" name="grade"/>
+							value="<%= user.getGrade() %>" name="grade"/>
 						</div>
 					</div>
 					<div class="form-group">

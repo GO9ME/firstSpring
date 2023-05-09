@@ -1,6 +1,7 @@
-<%@page import="test.EmpDTO"%>
+<%@page import="kr.multi.erp.member.EmpDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<% ArrayList<EmpDTO> userList = (ArrayList) request.getAttribute("userList"); %>
 	<jsp:include page="../main/top.jsp" />
 	<div class="container-fluid">
 		<div class="row">
@@ -15,47 +17,31 @@
 				<jsp:include page="../layout/servlet_menu.jsp" />
 			</div>
 			<div class="col-lg-10">
-				<table border=1px width=700px>
+				<h1>회원목록조회</h1>
+				<table border="1">
 					<tr>
-						<th>deptno</th>
-						<th>name</th>
-						<th>id</th>
-						<th>pass</th>
-						<th>addr</th>
-						<th>point</th>
-						<th>grade</th>
-						<th>delete</th>
+						<th>부서코드</th>
+						<th>성명</th>
+						<th>아이디</th>
+						<th>주소</th>
+						<th>포인트</th>
+						<th>등급</th>
+						<th>삭제</th>
 					</tr>
-
- 					<%
-					ArrayList<EmpDTO> list = (ArrayList<EmpDTO>) request.getAttribute("userlist");
-					int size = list.size();
-					for (int i = 0; i < size; i++) {
+					<% 
+					for (EmpDTO user : userList) {
 					%>
-					
 					<tr>
-						<%
-						EmpDTO item = list.get(i);
-						%>
-						
-						<td><a href='/springmvc/mvc/read.do?id=<%=list.get(i).getId()%>&state=READ'><%=item.getDeptno()%></a></td>
-						
-						<td><%=item.getName()%></td>
-						<td><%=item.getId()%></td>
-						<td><%=item.getPass()%></td>
-						<td><%=item.getAddr()%></td>
-						<td><%=item.getPoint()%></td>
-						<td><%=item.getGrade()%></td>
-						<td>
-						
-							<a href='/springmvc/mvc/delete.do?id=<%=list.get(i).getId()%>'>삭제</a>
-						</td>
-
+						<td><%=user.getDeptno()%></td>
+						<td><%=user.getName()%></td>
+						<td><a href="/springmvc/emp/read.do?id=<%= user.getId() %>&state=READ"><%= user.getId() %></a></td>
+						<td><%=user.getAddr()%></td>
+						<td><%=user.getPoint()%></td>
+						<td><%=user.getGrade()%></td>
+						<td><a
+							href='/springmvc/emp/delete.do?test=info&id=<%= user.getId() %>'>삭제</a></td>
 					</tr>
-					
-					<%
-					}
-					%>
+					<% } %>
 				</table>
 			</div>
 		</div>

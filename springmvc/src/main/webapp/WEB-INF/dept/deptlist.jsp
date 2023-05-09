@@ -1,6 +1,6 @@
-<%@page import="kr.multicampus.erp.dept.DeptDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="kr.multi.erp.dept.DeptDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 </head>
 <body>
 	<%
-	ArrayList<DeptDTO> deptlist = (ArrayList<DeptDTO>) request.getAttribute("deptlist");
+	ArrayList<DeptDTO> deptList = (ArrayList<DeptDTO>) request.getAttribute("deptList");
 	%>
 	<jsp:include page="../main/top.jsp" />
 	<div class="container-fluid">
@@ -47,25 +47,27 @@
 							</tr>
 						</thead>
 						<tbody>
-						<%
-							int size = deptlist.size();
-						for(int i = 0 ; i <size; i++){
-							DeptDTO dept = deptlist.get(i);
-						%>
-							<tr>
-								<td><a href="/rn2rg2/dept/read.do?deptno=<%= dept.getDeptno()%>&state=READ"><%=dept.getDeptno() %></a></td>
-								<td><%=dept.getDeptname() %></td>
-								<td><%=dept.getDeptStartDay() %></td>
-								<td><%=dept.getDeptlevel() %></td>
-								<td><%=dept.getDeptstep() %></td>
-								<td><%=dept.getDeptuppercode() %></td>
-								<td><%=dept.getJob_category() %></td>
-								<td><%=dept.getMgr_id() %></td>
-								<td><%=dept.getDeptaddr() %></td>
-								<td><%=dept.getDepttel() %></td>
-								<td><a href="/rn2rg2/dept/delete.do?deptno=<%= dept.getDeptno()%>">삭제</a></td>
-							</tr>						
-						<%} %>
+							<%
+							int size = deptList.size();
+							
+							for (int i = 0; i < size; i++) {
+								DeptDTO dept = deptList.get(i); %>
+								<tr>
+									<td><a href="/springmvc/dept/read.do?deptno=<%= dept.getDeptno() %>&state=READ"><%= dept.getDeptno() %></a> </td>
+									<td><%= dept.getDeptname() %> </td>
+									<td><%= dept.getDeptStartDay() %> </td>
+									<td><%= dept.getDeptlevel() %> </td>
+									<td><%= dept.getDeptstep() %> </td>
+									<td><%= dept.getDeptuppercode() %> </td>
+									<td><%= dept.getJob_category() %> </td>
+									<td><%= dept.getMgr_id() %> </td>
+									<td><%= dept.getDeptaddr() %> </td>
+									<td><%= dept.getDepttel() %> </td>
+									<td><a href="/springmvc/dept/delete.do?deptno=<%= dept.getDeptno() %>">삭제</a> </td>
+								</tr>
+								
+								
+							<% } %>
 						</tbody>
 					</table>
 				</div>

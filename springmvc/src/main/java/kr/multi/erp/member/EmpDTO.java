@@ -1,5 +1,5 @@
 package kr.multi.erp.member;
-
+// 테이블 값을 모델링 해주는 클래스!
 public class EmpDTO {
 	private String deptno;
 	private String name;
@@ -33,8 +33,7 @@ public class EmpDTO {
 		this.grade = grade;
 	}
 	
-	
-	
+		
 	//select용
 	public EmpDTO(String deptno, String name, String id, String pass, String addr, int point, String grade) {
 		this(deptno, name, id, pass, addr, grade);

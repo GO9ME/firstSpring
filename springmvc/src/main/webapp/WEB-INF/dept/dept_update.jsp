@@ -1,4 +1,4 @@
-<%@page import="kr.multicampus.erp.dept.DeptDTO"%>
+<%@page import="kr.multi.erp.dept.DeptDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -25,7 +25,7 @@
 				<jsp:include page="../layout/servlet_menu.jsp" />
 			</div>
 			<div class="col-lg-10">
-				<form role="form" class="form-horizontal" action="/rn2rg2/dept/update.do" method="post">
+				<form role="form" class="form-horizontal" action="/springmvc/dept/update.do" method="post">
 					<fieldset>
 						<div id="legend">
 							<legend>아래 양식을 작성해주세요.</legend>
@@ -34,10 +34,13 @@
 							<!-- 부서코드 -->
 							<label class="control-label col-sm-2" for="deptcode">부서코드</label>
 							<div class="col-sm-3">
-								<input type="hidden"
-							 value="<%= dept.getDeptno()%>" name="deptno"/>
+								<%= dept.getDeptno() %>
+								<input type="hidden" name="deptno" value="<%= dept.getDeptno() %>">
 							</div>
 						</div>
+
+
+
 						<div class="form-group">
 							<!-- 부서명-->
 							<label class="control-label col-sm-2" for="name">부서명</label>
@@ -99,16 +102,18 @@
 							<!-- 등급-->
 							<label class="control-label col-sm-2" for="grade">부서주소</label>
 							<div class="col-sm-3">
+								<!-- 부서주소를 이곳에 출력하세요 -->
 								<input type="text"
-							 value="<%= dept.getDeptaddr()%>" name="deptaddr"/>
+							 value="<%= dept.getDeptaddr() %>" name="deptaddr"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<!-- 등급-->
 							<label class="control-label col-sm-2" for="grade">전화번호</label>
 							<div class="col-sm-3">
-							<input type="text"
-							 value="<%= dept.getDepttel()%>" name="depttel"/>
+								<!-- 전화번호를 이곳에 출력하세요 -->
+								<input type="text"
+							 value="<%= dept.getDepttel() %>" name="depttel"/>
 							</div>
 						</div>
 						<div class="form-group">

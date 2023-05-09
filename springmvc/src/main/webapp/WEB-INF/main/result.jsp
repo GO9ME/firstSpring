@@ -8,13 +8,13 @@
 </head>
 <body>
 	<h1>스프링이 공유해준 데이터</h1>
-	<hr/>
+	<hr />
+	<h2>jsp코드로 출력하기 : <%= request.getAttribute("msg") %></h2>
 	<h2>EL로 출력(공유명을 정의) : ${msg}</h2>
-	<h3>EL 공유명을 명시하면 page scope에서 공유명으로 공유된 데이터를 찾는다.
-		없으면 request scope에서 또 없으면 session scope에서 application scope에서 찾는다.
-		없으면 출력하지 않는다. ( null & exception에 관대 )
-	</h3>
-	
+	<h3>EL은 공유명을 명시하면 page scope에서 공유명으로 공유된 데이터를 찾는다.
+	    없으면 request scope에서 , 또 없으면 session scope에서 application scope에서 찾는다.
+	    없으면 출력하지 않음!
+	    </h3>
 	
 </body>
 </html>

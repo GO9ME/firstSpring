@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<h3>고급기능</h3>
 	<div class="list-group">
 		<a href="#" class="list-group-item">파일업로드</a>
