@@ -20,7 +20,7 @@
 				<jsp:include page="../layout/emp_menu.jsp" />
 			</div>
 			<div class="col-lg-10">
-				<a href="/springmvc/emp/list.do"><h1>회원목록보기</h1></a>
+				<a href="/springmvc/emp/list"><h1>회원목록보기</h1></a>
 				<form role="form" class="form-horizontal"
 					action="/springmvc/emp/insert.do" method="POST" name="myform">
 					<fieldset>

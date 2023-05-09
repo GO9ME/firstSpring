@@ -8,17 +8,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
 	@Autowired
 	EmpService service;
-	@RequestMapping("/register.do")
+	@RequestMapping("/emp/insert")
 	public String showPage() {
 		System.out.println("테스트");
 		return "member/register";
 	}
+
 	@RequestMapping("view/login")
 	public String loginpage() {
 		System.out.println("테스트");
@@ -59,7 +61,7 @@ public class MemberController {
 	
 	//register에서 사용자가 입력한 데이터를 db에 insert 하기 위한 컨트롤러 메소드
 	// => 사용자가 입력한 요청정보를 어떻게 추출
-	@RequestMapping("/emp/insert.do")
+	@RequestMapping(value="/emp/insert", method = RequestMethod.POST)
 	public String insert(EmpDTO user) {
 //		System.out.println(id + "," + pass);
 		System.out.println(user);

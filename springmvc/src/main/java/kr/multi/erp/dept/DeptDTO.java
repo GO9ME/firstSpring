@@ -90,9 +90,11 @@ public class DeptDTO {
 		this.deptno = deptno;
 	}
 	public String getDeptname() {
+		System.out.println("getDeptName");
 		return deptname;
 	}
 	public void setDeptname(String deptname) {
+		System.out.println("setDeptName");
 		this.deptname = deptname;
 	}
 	public String getDeptStartDay() {
