@@ -23,14 +23,10 @@
 	</definition>
 
 	<!-- index 화면 -->
-	<definition name="index" extends="indexTemplate">
-
-	</definition>
+	<definition name="index" extends="indexTemplate" />
 
 	<!-- login 화면 -->
-	<definition name="login" extends="mainTemplate">
-
-	</definition>
+	<definition name="login" extends="mainTemplate" />
 
 	<!-- board 화면 -->
 	<definition name="menu/board" extends="mainTemplate">
