@@ -18,13 +18,13 @@ public class MemberController {
 	@RequestMapping("/emp/insert")
 	public String showPage() {
 		System.out.println("테스트");
-		return "member/register";
+		return "emp/insert";
 	}
 
 	@RequestMapping("view/login")
 	public String loginpage() {
 		System.out.println("테스트");
-		return "member/login";
+		return "emp/login";
 	}
 	
 	@RequestMapping("/login.do")

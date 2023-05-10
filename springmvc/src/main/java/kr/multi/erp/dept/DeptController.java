@@ -52,11 +52,13 @@ public class DeptController {
 	// 조회한 LIst를 공유하고 view에서 정보를 출력하도록 해야한다. 
 	@RequestMapping("/dept/list.do")
 	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView("dept/deptlist_jstl");
+//		ModelAndView mav = new ModelAndView("dept/deptlist_jstl");
+		ModelAndView mav = new ModelAndView();
 		// 서비스의 메소드 호출
 		List<DeptDTO> deptList = service.select();
 		//결과 공유
-		mav.addObject("deptList", deptList);
+		mav.setViewName("deptlist");
+		mav.addObject("deptlist", deptList);
 		return mav;
 	}
 	@RequestMapping("/dept/read.do")

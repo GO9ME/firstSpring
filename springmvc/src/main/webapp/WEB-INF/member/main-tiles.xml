@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+
+	<!-- 실제 작업할 뷰를 등록 member작업에 관련된 view만 등록 -->
+	<!-- emp 등록페이지 보기 뷰 
+		등록된 템플릿에서 영역마다 교체할 뷰 정보만 정의
+	
+	-->
+	<definition name="emp/insert" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/tilesview/register.jsp"/>
+	</definition>
+	
+	<definition name="emp/login" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/tilesview/login.jsp"/>
+	</definition>
+	
+	
+
+
+</tiles-definitions>
