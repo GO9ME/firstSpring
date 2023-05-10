@@ -41,7 +41,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="dept" items="${deptList}">
+				<c:forEach var="dept" items="${deptlist}">
 					<tr>
 						<td><a
 							href="/springmvc/dept/read.do?deptno=${ dept.deptno}&state=READ">${dept.deptno}</a>
