@@ -41,7 +41,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public BoardDTO read(String board_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionTemplate.selectOne("com.multi.erp.board.selectone", board_no);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int delete(String board_no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.delete("com.multi.erp.board.delete", board_no);
 	}
 
 	@Override

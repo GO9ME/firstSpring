@@ -41,7 +41,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardDTO getBoardInfo(String board_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.read(board_no);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int delete(String board_no) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(board_no);
 	}
 
 	@Override

@@ -54,5 +54,17 @@ public class BoardController {
 		mav.addObject("boardlist", boardlist);
 		return mav;
 	}
-
+	
+	@RequestMapping("/board/read")
+	public ModelAndView read(String board_no) {
+		ModelAndView mav = new ModelAndView("board/read");
+		BoardDTO board =  service.getBoardInfo(board_no);
+		mav.addObject("board", board);
+		return mav;
+	}
+	@RequestMapping("/board/delete")
+	public String delete(String board_no) {
+		service.delete(board_no);
+		return "redirect:/board/list.do"; // 컨트롤러 요청 재지정
+	}
 }

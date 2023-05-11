@@ -49,7 +49,7 @@
 				<c:forEach var="board" items="${boardlist}">
 					<tr>
 						<td>${board.board_no }</td>
-						<td>${board.title }</td>
+						<td><a href="/erp/board/read?board_no=${board.board_no}">${board.title }</a></td>
 						<td>${board.id }</td>
 						<td>${board.write_date }</td>
 						<td><a href="/erp/board/delete?board_no=${board.board_no}">삭제</a></td>

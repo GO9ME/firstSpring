@@ -1,26 +1,20 @@
 package kr.multi.erp.dept;
 
-import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 
+@Data
+
+//@NoArgsConstructor
+@RequiredArgsConstructor
+@AllArgsConstructor
 //@Setter
 //@Getter
 //@ToString
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@RequiredArgsConstructor
 public class DeptDTO {
 	@NonNull
 	private String deptno;

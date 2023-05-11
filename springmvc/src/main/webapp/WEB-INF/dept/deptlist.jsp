@@ -54,8 +54,8 @@
 								DeptDTO dept = deptList.get(i); %>
 								<tr>
 									<td><a href="/springmvc/dept/read.do?deptno=<%= dept.getDeptno() %>&state=READ"><%= dept.getDeptno() %></a> </td>
-									<td><%= dept.getDeptname() %> </td>
 									<td><%= dept.getDeptStartDay() %> </td>
+									<td><%= dept.getDeptname() %> </td>
 									<td><%= dept.getDeptlevel() %> </td>
 									<td><%= dept.getDeptstep() %> </td>
 									<td><%= dept.getDeptuppercode() %> </td>

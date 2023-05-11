@@ -6,15 +6,27 @@
 	<!-- #{}으로 변수를 연결하면 PreparedStatement의 ?와 연결 -->
 	<insert id="insert" parameterType="board">
 		insert into tbboard
-		values (null,#{id},sysdate(),#{title},#{content},#{category})
+		values
+		(null,#{id},sysdate(),#{title},#{content},#{category})
 	</insert>
-	
+
 	<select id="selectall" resultType="board">
 		select * from tbboard
 	</select>
-	
+
 	<select id="search" resultType="board" parameterType="String">
-		select * from tbboard 
+		select *
+		from tbboard
 		WHERE title like CONCAT('%',#{title},'%')
 	</select>
+
+	<select id="selectone" resultType="board" parameterType="String">
+		select *
+		from tbboard
+		WHERE board_no = #{board_no}
+	</select>
+	<delete id="delete" parameterType="String">
+		delete from tbboard 
+		WHERE board_no = #{board_no}
+	</delete>
 </mapper>

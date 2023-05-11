@@ -17,6 +17,7 @@
 <body>
 	
 	<jsp:include page="../main/top.jsp" />
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-2 sidenav">
