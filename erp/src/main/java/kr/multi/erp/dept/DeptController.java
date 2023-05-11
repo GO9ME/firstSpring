@@ -18,8 +18,7 @@ import org.springframework.web.util.WebUtils;
 public class DeptController {
 	@Autowired
 	DeptService service;
-	@Autowired
-	FileUploadLogic fileuploadService;
+
 	// insert를 하기위해 view를 볼 수 있는 메소드
 	
 	@RequestMapping("/dept/register")
@@ -31,22 +30,8 @@ public class DeptController {
 	@RequestMapping("/dept/insert.do")
 	public String insert(DeptDTO dept, HttpSession session) throws IllegalStateException, IOException {
 		System.out.println(dept);
-		//1. MultipartFile정보를 추출
-		List<MultipartFile> files = dept.getFiles();
-		// 2. 업로드 될 서버의 경로 - 실제 서버의 경로
-		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
-		System.out.println(path);
-		// service.insert(dept);
-		// 3. 파일 업로드 서비스를 호출해서 실제 서버에 업로드되도록 작업하기
-		List<DeptFileDTO> deptfiledtolist = fileuploadService.uploadFiles(files, path);
-		int count = 1;
-		// 업로드 된 파일의 deptImageFileno의 값을 셋팅
-		for (DeptFileDTO deptfiledto : deptfiledtolist) {
-			deptfiledto.setDeptImageFileno(count+"");
-			count++;
-		}
 		//4. db에 저장하기
-		service.insert(dept, deptfiledtolist);
+		service.insert(dept);
 		return "redirect:/dept/list.do";
 	}
 	// 조회한 LIst를 공유하고 view에서 정보를 출력하도록 해야한다. 

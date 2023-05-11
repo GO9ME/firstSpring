@@ -29,11 +29,11 @@
 	<definition name="login" extends="mainTemplate" />
 
 	<!-- board 화면 -->
-	<definition name="menu/board" extends="mainTemplate">
+	<definition name="board/*" extends="mainTemplate">
 		<put-attribute name="menu"
 			value="/WEB-INF/menu/board_menu.jsp" />
 		<put-attribute name="content"
-			value="/WEB-INF/board/boardlist.jsp" />
+			value="/WEB-INF/board/board_{1}.jsp" />
 	</definition>
 
 

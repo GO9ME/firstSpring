@@ -39,11 +39,6 @@ public class DeptServiceImpl implements DeptService {
 		return dao.update(dept);
 	}
 
-	@Override
-	public int insert(DeptDTO dept, List<DeptFileDTO> deptfiledtolist) {
-		dao.insert(dept);
-		dao.insertFile(deptfiledtolist);
-		return 0;
-	}
+
 
 }

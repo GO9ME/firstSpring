@@ -11,5 +11,5 @@ public interface DeptService {
 	public DeptDTO read(String deptno);
 	int update(DeptDTO dept);
 	// 부서등록- 부서 일반 등록, 첨부파일 디비
-	int insert(DeptDTO dept, List<DeptFileDTO> deptfiledtolist);
+
 }

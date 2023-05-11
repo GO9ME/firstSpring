@@ -54,18 +54,6 @@ public class DeptDAOImpl implements DeptDAO {
 		return template.update(sql, dept.getMgr_id(), dept.getDeptaddr(), dept.getDepttel(), dept.getDeptno());
 	}
 
-	@Override
-	public int insertFile(List<DeptFileDTO> deptfiledtolist) {
-		String sql = "INSERT INTO deptimage_file values(last_insert_id(),?,?,?)";
-		template.batchUpdate(sql, deptfiledtolist, deptfiledtolist.size(), new ParameterizedPreparedStatementSetter<DeptFileDTO>() {
-			@Override
-			public void setValues(PreparedStatement ps, DeptFileDTO deptfiledto) throws SQLException {
-				ps.setString(1, deptfiledto.getOriginalFilename());
-				ps.setString(2, deptfiledto.getStoreFilename());
-				ps.setString(3, deptfiledto.getDeptImageFileno());
-			}
-		});
-		return 0;
-	}
+
 
 }

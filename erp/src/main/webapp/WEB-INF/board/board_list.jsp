@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +20,14 @@
 </head>
 <body>
 	<%
+
 	%>
-	
+
 	<div style="padding-top: 30px">
 		<div class="col-md-3" style="padding-bottom: 10px">
-		    구분:
+			구분:
 			<form action="">
-				<select name="category"  id="category">
+				<select name="category" id="category">
 					<option value="all">전체게시물</option>
 					<option value="경조사">경조사</option>
 					<option value="사내소식">사내소식</option>
@@ -43,7 +46,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+				<c:forEach var="board" items="${boardlist}">
+					<tr>
+						<td>${board.board_no }</td>
+						<td>${board.title }</td>
+						<td>${board.id }</td>
+						<td>${board.write_date }</td>
+						<td><a href="/erp/board/delete?board_no=${board.board_no}">삭제</a></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -55,7 +66,7 @@
 			<option value="write_date">작성일</option>
 		</select> <input type="text" name="search" /> <input type="submit" value="검색">
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="" style="text-align: right;">글쓰기</a></li>
+			<li><a href="/erp/board/write" style="text-align: right;">글쓰기</a></li>
 		</ul>
 	</form>
 
