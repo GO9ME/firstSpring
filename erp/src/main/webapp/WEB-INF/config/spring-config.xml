@@ -38,7 +38,7 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/" />
 		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="2"/>
+		<beans:property name="order" value="2" />
 	</beans:bean>
 	<!-- ======================================= tiles를 기반으로 뷰정보를 만드는 ViewResolver등록 
 		======================================= -->
@@ -56,19 +56,33 @@
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
-		<beans:property name="order" value="1"/>
+		<beans:property name="order" value="1" />
 	</beans:bean>
+
 	<!-- =======================================spring jdbc - Connection 설정 
 		========================================================= -->
-	<beans:bean id="ds"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- <beans:bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver" /> 
+		<beans:property name="url" value="jdbc:mysql://127.0.0.1:3306/jdbc?serverTimezone=UTC" 
+		/> <beans:property name="username" value="exam" /> <beans:property name="password" 
+		value="1234" /> </beans:bean> -->
+
+	<!-- 커넥션 풀 등록 -->
+	<beans:bean id="hikariConfig"
+		class="com.zaxxer.hikari.HikariConfig">
 		<beans:property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
-		<beans:property name="url"
-			value="jdbc:mysql://127.0.0.1:3306/jdbc?serverTimezone=UTC" />
-		<beans:property name="username" value="exam" />
-		<beans:property name="password" value="1234" />
+		<beans:property name="jdbcUrl"
+			value="jdbc:mysql://127.0.0.1:3306/erp?serverTimezone=UTC" />
+		<beans:property name="username" value="erp" />
+		<beans:property name="password" value="erp" />
+		<!-- <beans:property name="maximumPoolSize" value="20" /> -->
 	</beans:bean>
+	<beans:bean id="ds"
+		class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<beans:constructor-arg ref="hikariConfig" />
+	</beans:bean>
+
 	<beans:bean id="template"
 		class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:constructor-arg ref="ds" />
