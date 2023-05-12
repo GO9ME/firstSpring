@@ -1,6 +1,5 @@
 /.metadata/
 /Servers
-*.manifest
-MANIFEST.MF
-pom.properties
-/target
+*/target/*
+.project
+.classpath
