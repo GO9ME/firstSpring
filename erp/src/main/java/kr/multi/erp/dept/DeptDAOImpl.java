@@ -1,16 +1,10 @@
 package kr.multi.erp.dept;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ParameterizedPreparedStatementSetter;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
-import kr.multi.erp.member.EmpRowMapper;
 @Repository
 public class DeptDAOImpl implements DeptDAO {
 	@Autowired

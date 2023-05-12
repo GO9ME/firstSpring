@@ -47,7 +47,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int update(BoardDTO board) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(board);
 	}
 
 	@Override
@@ -65,13 +65,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardDTO> search(String tag, String data) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.search(tag, data);
 	}
 
 	@Override
 	public List<BoardDTO> findByCategory(String category) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findByCategory(category);
 	}
 
 }

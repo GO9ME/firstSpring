@@ -30,7 +30,7 @@
 						
 						<label class="col-sm-2 col-sm-2 control-label">작성자</label>
 						<div class="col-sm-10">
-							<input type="hidden" name="id" value="9401023jang">
+							<input type="hidden" name="id" value="0111022kim">
 							<p class="form-control-static">김서연</p>
 						</div>
 						<div class="form-group">

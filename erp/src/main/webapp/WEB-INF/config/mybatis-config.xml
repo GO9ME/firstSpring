@@ -6,8 +6,11 @@
 	<!-- 내부에서 사용할 DTO, mapper파일 등록 -->
 	<typeAliases>
 		<typeAlias type="com.multi.erp.board.BoardDTO" alias="board" />
+		<typeAlias type="com.multi.erp.member.MemberDTO"
+			alias="member" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="mapper/board.xml"/>
+		<mapper resource="mapper/board.xml" />
+		<mapper resource="mapper/member.xml" />
 	</mappers>
 </configuration>

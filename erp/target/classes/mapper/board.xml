@@ -26,7 +26,56 @@
 		WHERE board_no = #{board_no}
 	</select>
 	<delete id="delete" parameterType="String">
-		delete from tbboard 
-		WHERE board_no = #{board_no}
+		delete from tbboard
+		WHERE
+		board_no = #{board_no}
 	</delete>
+
+	<update id="update" parameterType="board">
+		UPDATE tbboard
+		SET title =
+		#{title},
+		content= #{content},
+		category = #{category}
+		WHERE board_no =
+		#{board_no}
+	</update>
+
+	<select id="findbycategory" parameterType="String"
+		resultType="board">
+		select *
+		from tbboard
+		<choose>
+			<when test="category == 'all'">
+				WHERE 1=1
+			</when>
+			<otherwise>
+				WHERE category = #{category}
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="dynamicsearch" resultType="board"
+		parameterType="Map">
+		SELECT * FROM tbboard
+		<where>
+			<if test="tag =='title' and data !=''">
+				title LIKE CONCAT('%', #{data} ,'%')
+			</if>
+			<if test="tag =='id' and data !=''">
+				id LIKE CONCAT('%', #{data} ,'%')
+			</if>
+			<if test="tag =='content' and data !=''">
+				content LIKE CONCAT('%', #{data} ,'%')
+			</if>
+			<if test="tag =='write_date' and data !=''">
+				<![CDATA[
+				write_date <= #{data}
+				]]>
+			</if>
+		</where>
+
+
+
+	</select>
 </mapper>

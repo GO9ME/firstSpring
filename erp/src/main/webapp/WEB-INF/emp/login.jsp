@@ -15,7 +15,7 @@
 				<td bgcolor=#ffffff height=100% align=center valign=top>
 					<table cellpadding=0 cellspacing=0 border=0 width=710>
 
-					
+
 						<tr>
 							<td>
 								<table cellpadding="0" cellspacing=0 width="100%"
@@ -45,12 +45,11 @@
 																				src="/erp/images/login_id.gif"></td>
 																			<td background="/erp/images/inputBg.gif"><input
 																				type="text" name="id" size="15" class="grayinput"
-																				tabindex=1 style="width: 156;"
-																				 value=""></td>
+																				tabindex=1 style="width: 156;" value=""></td>
 																			<td rowspan=3 style="padding-left: 10" valign=bottom>
-																			<input
-																				type='image' src="/erp/images/btn_login.gif"
-																				border="0" tabindex=3></td>
+																				<input type='image' src="/erp/images/btn_login.gif"
+																				border="0" tabindex=3>
+																			</td>
 																		</tr>
 																		<tr>
 																			<td height=10></td>
@@ -69,7 +68,7 @@
 																				style="display: inline"><label
 																					for="member_id_save"><input type="checkbox"
 																						name="member_id_save" id="member_id_save"
-																						value="T" <% %> />아이디저장</label> </span></td>
+																						value="T" <%%> />아이디저장</label> </span></td>
 																		</tr>
 																	</table>
 																</td>

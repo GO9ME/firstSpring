@@ -15,12 +15,18 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	
+	$(document).ready(function() {
+		$("#category").val("${category}").attr("selected", "selected");
+		$("#category").change(function() {
+			location.href = "/erp/board/list.do/" + $(this).val();
+		})
+
+	})
 </script>
 </head>
 <body>
 	<%
-
+	
 	%>
 
 	<div style="padding-top: 30px">
@@ -49,10 +55,10 @@
 				<c:forEach var="board" items="${boardlist}">
 					<tr>
 						<td>${board.board_no }</td>
-						<td><a href="/erp/board/read?board_no=${board.board_no}">${board.title }</a></td>
+						<td><a href="/erp/board/read.do/${board.board_no}/READ">${board.title }</a></td>
 						<td>${board.id }</td>
 						<td>${board.write_date }</td>
-						<td><a href="/erp/board/delete?board_no=${board.board_no}">삭제</a></td>
+						<td><a href="/erp/board/delete.do/${board.board_no}">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
