@@ -45,7 +45,7 @@ public class MemberController {
 			session.setAttribute("user", user);
 			view = "redirect:/index.do";
 		} else {
-			view = "redirect://emp/login.do";
+			view = "redirect:/emp/login.do";
 		}
 		return view;
 	}
