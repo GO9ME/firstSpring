@@ -5,9 +5,11 @@
 
 <mapper namespace="com.multi.erp.member">
 	<select id="login" parameterType="member" resultType="member">
-		SELECT *
-		FROM member2
+		SELECT m.*, d.deptname, j.menupath, j.job_category
+		FROM member2 m, dept d, job j
 		WHERE id = #{id}
 		AND pass = #{pass}
+		AND m.deptno = d.deptno
+		AND d.job_category = j.job_id
 	</select>
 </mapper>

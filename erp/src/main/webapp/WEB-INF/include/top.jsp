@@ -44,9 +44,12 @@
 								class="glyphicon glyphicon-log-in"> </span>Login</a></li>
 					</c:when>
 					<c:otherwise>
-						<c:if test=""></c:if>
+
+						<li><a href="/erp/emp/mypage"><span
+								class="glyphicon glyphicon-log-out"></span> MyPage</a></li>
 						<li><a href="/erp/emp/logout.do"><span
 								class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
 					</c:otherwise>
 				</c:choose>
 			</ul>

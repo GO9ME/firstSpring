@@ -1,6 +1,9 @@
 package com.multi.erp.board;
 
 import java.sql.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class BoardDTO {
 	String board_no;
 	String id;
@@ -15,6 +19,10 @@ public class BoardDTO {
 	String title;
 	String content;
 	String category;
+	
+	//클라이언트가 전송하는 바이너리파일 데이터를 스프링MVC가 내부에서 MultipartFile객체로 만들어서 관리
+	//첨부파일이 여러개인 경우 list에 넣거나 배열로 관리
+	List<MultipartFile> files;
 	
 //	public BoardDTO() {
 //		

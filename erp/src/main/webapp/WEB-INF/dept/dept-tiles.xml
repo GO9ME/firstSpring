@@ -11,7 +11,7 @@
 	<definition name="dept/list" extends="mainTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
 		<put-attribute name="content" 
-			value="/WEB-INF/dept/deptlist.jsp"/>
+			value="/WEB-INF/dept/dept_list.jsp"/>
 	</definition>
 	<definition name="dept/dept_read" extends="mainTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>

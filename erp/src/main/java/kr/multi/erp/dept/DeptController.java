@@ -42,7 +42,7 @@ public class DeptController {
 		// 서비스의 메소드 호출
 		List<DeptDTO> deptList = service.select();
 		//결과 공유
-		mav.setViewName("deptlist");
+		mav.setViewName("dept/dept_list");
 		mav.addObject("deptlist", deptList);
 		return mav;
 	}
@@ -55,7 +55,7 @@ public class DeptController {
 		mav.addObject("dept", dept);
 		String view = "";
 		if (state.equals("READ")) {
-			view = "dept/dept_read_jstl"; 
+			view = "dept/dept_read"; 
 		} else {
 			view = "dept/dept_update"; 
 		}

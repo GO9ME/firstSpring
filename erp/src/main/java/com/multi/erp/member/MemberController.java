@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/emp")
 public class MemberController {
 	MemberService service;
 
@@ -22,17 +23,12 @@ public class MemberController {
 		this.service = service;
 	}
 
-	@RequestMapping("/index.do")
-	public String tiles_index() {
-		return "index";
-	}
-
-	@RequestMapping("/emp/login.do")
+	@RequestMapping("/login.do")
 	public String getLoginVeiw() {
 		return "login";
 	}
 
-	@PostMapping("/emp/login.do")
+	@PostMapping("/login.do")
 	public String login(String id, String pass, HttpServletRequest request) {
 		System.out.println(id + " , " + pass);
 		MemberDTO user = service.login(new MemberDTO(id, pass));
@@ -43,14 +39,15 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			// 세션에 데이터 공유하기
 			session.setAttribute("user", user);
-			view = "redirect:/index.do";
+			// 서비스에서 가공한 뷰의 이름 - 로그인한 사용자가 어떤 job이냐에 따라 작업할 수 있는 메뉴가 달라질 수 있도록
+			view = user.getMenupath();
 		} else {
 			view = "redirect:/emp/login.do";
 		}
 		return view;
 	}
 
-	@RequestMapping("/emp/logout.do")
+	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
 		if (session != null) {
 			// 사용하던 세션을 메모리에서 ㅔ거하기
@@ -58,9 +55,13 @@ public class MemberController {
 		}
 		return "redirect:/index.do";
 	}
-
-	@RequestMapping("/menu/board.do")
-	public String getBoardView() {
-		return "menu/board";
+	
+	@RequestMapping("/mypage")
+	public String mypage(HttpSession session) {
+		MemberDTO user = (MemberDTO) session.getAttribute("user");
+		return user.getMenupath();
 	}
+
+	
+
 }

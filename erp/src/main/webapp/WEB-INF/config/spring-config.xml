@@ -76,9 +76,10 @@
 		<beans:property name="username" value="erp" />
 		<beans:property name="password" value="erp" />
 	</beans:bean>
-		<!-- <beans:property name="maximumPoolSize" value="20" /> -->
-	
-	<beans:bean id="ds" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+	<!-- <beans:property name="maximumPoolSize" value="20" /> -->
+
+	<beans:bean id="ds"
+		class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<beans:constructor-arg ref="hikariConfig" />
 	</beans:bean>
 
@@ -89,15 +90,24 @@
 
 	<!-- mybatis를 사용하기 위한 설정 -->
 	<!-- mybatis내부에서 DataSource를 통해 커넥션을 획득해서 관리하는 객체 -->
-	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<beans:property name="dataSource" ref="ds"/>
-		<beans:property name="configLocation" value="/WEB-INF/config/mybatis-config.xml"/>
-		
+	<beans:bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="ds" />
+		<beans:property name="configLocation"
+			value="/WEB-INF/config/mybatis-config.xml" />
+
 	</beans:bean>
-	
+
 	<!-- mybatis의 핵심클래스(sql을 실행하기 위한 기능을제공) -->
-	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<beans:constructor-arg ref="sqlSessionFactory"/>
+	<beans:bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg ref="sqlSessionFactory" />
+	</beans:bean>
+
+	<!-- 파일업로드 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
 	</beans:bean>
 
 	<!-- 스프링컨테이너가 start될 떄 base-package에 명시된 패키지를 읽어서 컨트롤러를 객체로 생성 -->
@@ -105,7 +115,7 @@
 	<context:component-scan base-package="kr" />
 	<context:component-scan base-package="main" />
 	<context:component-scan base-package="com" />
-	
+
 
 
 

@@ -36,6 +36,24 @@
 			value="/WEB-INF/board/board_{1}.jsp" />
 	</definition>
 
+	<!-- member 화면 -->
+	<definition name="member/*" extends="mainTemplate">
+		<put-attribute name="menu"
+			value="/WEB-INF/menu/insa_menu.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/emp/{1}.jsp" />
+	</definition>
+
+	<!-- dept 화면 -->
+	<definition name="dept/*" extends="mainTemplate">
+		<put-attribute name="menu"
+			value="/WEB-INF/menu/insa_menu.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/dept/{1}.jsp" />
+	</definition>
+
+
+
 
 
 </tiles-definitions>

@@ -71,7 +71,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO login(MemberDTO loginUser) {
 		// TODO Auto-generated method stub
-		return dao.login(loginUser);
+		MemberDTO user = dao.login(loginUser);
+
+		if (user != null) {
+			String menupath = user.getMenupath();
+			menupath = menupath.substring(menupath.indexOf("/") + 1, menupath.indexOf("_"));
+			user.setMenupath(menupath);
+			System.out.println("menu path : " + menupath);
+		}
+		return user;
 	}
 
 }
