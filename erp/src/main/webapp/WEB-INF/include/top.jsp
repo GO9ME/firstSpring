@@ -33,7 +33,7 @@
 
 	<div style="height: 90px" style="padding:10px">
 		<div id="toparea" class="navbar navbar-inverse">
-			<a href="#"
+			<a href="/erp/index.do"
 				style="position: absolute; top: 30px; font-size: 18pt; font-weight: bolder; text-decoration: none; padding-left: 10px">KimSaemERP</a>
 			<ul class="nav navbar-nav navbar-right"
 				style="position: relative; top: 20px">
@@ -76,7 +76,7 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="/erp/index.do">Home</a></li>
 					<li><a href="/erp/menu/insa.do">업무관리</a></li>
 					<li><a href="#">자원관리</a></li>
 					<li><a href="/erp/board/list.do/all">커뮤니티</a></li>

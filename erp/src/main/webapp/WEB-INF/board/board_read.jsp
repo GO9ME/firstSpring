@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE>
 <html>
@@ -18,6 +19,8 @@
 
 	})
 </script>
+
+
 
 </head>
 <body>
@@ -56,6 +59,26 @@
 			</div>
 			<div class="col-md-8">${board.title }</div>
 		</div>
+		<c:if test="${!empty boardfilelist}">
+			<div class="form-group">
+				<div class="col-md-2 text-right">
+					<label for="title" class="control-label">첨부파일</label>
+				</div>
+				<div class="col-md-8">
+					<c:forEach var="file" items="${boardfilelist}">
+
+						<h5>
+							<a
+								href="/erp/board/download/${board.id }/${board.board_no}/${file.boardFileno}">
+								${file.originalFilename} </a>
+						</h5>
+						<img alt="" src="/erp/upload/${file.storeFilename}" width="200px"
+							height="200px">
+
+					</c:forEach>
+				</div>
+			</div>
+		</c:if>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="title" class="control-label">작성날짜</label>
@@ -71,6 +94,8 @@
 				${board.content }</div>
 		</div>
 
+
+
 		<div class="form-group">
 			<div class="col-md-10 text-center">
 				<input type="submit" class="btn btn-lg btn-primary" value="수정">
@@ -85,6 +110,12 @@
 			</div>
 		</div>
 	</form>
+
+
+	<!-- Swiper JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
 
 </body>
 </html>

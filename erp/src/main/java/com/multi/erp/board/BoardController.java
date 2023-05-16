@@ -1,12 +1,18 @@
 package com.multi.erp.board;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.multi.erp.member.MemberDTO;
@@ -98,15 +105,17 @@ public class BoardController {
 	@RequestMapping("/board/read.do/{board_no}/{state}")
 	public String read(@PathVariable String board_no, @PathVariable String state, Model model) {
 		BoardDTO board = service.getBoardInfo(board_no);
+		List<BoardFileDTO> boardfilelist = service.getFileList(board_no);
+		System.out.println("boardfilelist" + boardfilelist);
 		String view = "";
 
 		if (state.equals("READ")) {
 			view = "board/read";
-			System.out.println(view);
 		} else {
 			view = "board/update";
 		}
 		model.addAttribute("board", board);
+		model.addAttribute("boardfilelist", boardfilelist);
 		return view;
 	}
 
@@ -137,6 +146,33 @@ public class BoardController {
 
 		}
 		return view;
+	}
+
+	@RequestMapping("/board/download/{id}/{board_no}/{boardFileno}")
+	public ResponseEntity<UrlResource> downloadFile(@PathVariable String id, @PathVariable String board_no,
+			@PathVariable String boardFileno, HttpSession session) throws MalformedURLException, FileNotFoundException {
+		// 1. 파일을 다운로드 하기 위해 디비에 저장된 파일의 정보를 가져오기 - 다운로드를 요청한 파일을 response
+		BoardFileDTO selectfileInfo = service.getFile(new BoardFileDTO(board_no, "", "", boardFileno));
+
+		// 2. BoardFileDTO객체에서 다운로드할 파일을 실제 객체로 변환하는 작업
+		// UrlResoucre resource = new UrlResource("file:"+파일의 full path) <- 실제 파일 위치
+
+		// 미리 업로드된 파일을 다운로드 해야 하므로 업로드된 파일이 저장된 위치와 실제 저장된 파일명을 연결해서 경로를 만들어줘야함
+		UrlResource resource = new UrlResource("file:" + WebUtils.getRealPath(session.getServletContext(),
+				"/WEB-INF/upload/" + selectfileInfo.getStoreFilename()));
+
+		// 3. 파일명에 한글이 있는 경우 오류가 발생하지 않도록 처리 - 다운로드되는 파일명
+		String encodedFilename = UriUtils.encode(selectfileInfo.getOriginalFilename(), "UTF-8");
+
+		// 4. 파일을 다운로드 형식으로 응답하기 위해서 응답헤더에 세팅 attachment; filename="a.jpg"
+		String mycontenttype = "attachment; filename=\"" + encodedFilename + "\"";
+		/*
+		 * BodyBuilder builder = ResponseEntity.ok(); ResponseEntity<UrlResource>
+		 * response = builder.body(resource); return response;
+		 */
+		return ResponseEntity.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, mycontenttype)
+				.body(resource);
 	}
 
 }

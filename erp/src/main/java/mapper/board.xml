@@ -4,6 +4,19 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.erp.board">
 	<!-- #{}으로 변수를 연결하면 PreparedStatement의 ?와 연결 -->
+	<select id="getfileinfo" parameterType="boardfile" resultType="boardfile">
+		SELECT * 
+		FROM board_file
+		WHERE board_no=#{board_no} 
+		AND boardFileno = #{boardFileno}
+	
+	</select>
+	<select id="fileselect" parameterType="String" resultType="boardfile">
+		select * 
+		FROM board_file
+		WHERE board_no = #{boardno} 
+		
+	</select>
 	<insert id="fileinsert" parameterType="java.util.List">
 		INSERT INTO
 		board_file

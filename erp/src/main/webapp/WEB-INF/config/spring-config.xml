@@ -20,8 +20,11 @@
 	<!-- 이미지파일,css,js와 같은 정적 리소스의 매핑을 등록 location은 실제 파일이 저장된 위치로 /WEB-INF부터 
 		시작 mapping 이 파일들을 요청할 path정보(사용자정의로 개발자가 요청하고 싶은 path명을 정의) -->
 	<resources mapping="/resources/**" location="/resources/" />
+
 	<resources mapping="/images/**"
 		location="/WEB-INF/static/images/" />
+	<resources mapping="/upload/**"
+		location="/WEB-INF/upload/" />
 	<!-- css -->
 	<resources mapping="/common/css/**"
 		location="/WEB-INF/static/common/css/" />

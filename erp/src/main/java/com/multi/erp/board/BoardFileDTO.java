@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BoardFileDTO {
-	private String deptno;
+	private String board_no;
 	private String originalFilename;
 	private String storeFilename;
-	private String deptImageFileno;
+	private String boardFileno;
 
 }
