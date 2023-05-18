@@ -23,7 +23,7 @@
 		VALUES
 		<foreach collection="list" item="file" separator=",">
 			(last_insert_id(),
-			#{file.originalFilename},#{file.storeFilename},#{file.deptImageFileno})
+			#{file.originalFilename},#{file.storeFilename},#{file.boardFileno})
 		</foreach>
 
 	</insert>

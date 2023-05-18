@@ -29,13 +29,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insert(MemberDTO user, MultipartFile file, String realpath, String filename) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(user);
 	}
 
 	@Override
 	public boolean idCheck(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.idCheck(id);
 	}
 
 	@Override

@@ -14,7 +14,7 @@
 
 	<!-- Application Loggers -->
 	<logger name="com.multi.erp">
-		<level value="info" />
+		<level value="trace" />
 	</logger>
 
 	<!-- 3rdparty Loggers -->

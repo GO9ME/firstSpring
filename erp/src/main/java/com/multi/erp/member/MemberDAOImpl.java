@@ -29,7 +29,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int insert(MemberDTO user) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("com.multi.erp.member.insert", user);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public boolean idCheck(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return sqlSession.selectOne("com.multi.erp.member.idcheck", id);
 	}
 
 	@Override

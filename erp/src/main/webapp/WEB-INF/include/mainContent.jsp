@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +20,73 @@
 	margin-bottom: 0;
 	border-radius: 0;
 }
-
 </style>
+
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$("#boardCategory>li")
+								.each(
+										function() {
+											$(this)
+													.click(
+															function() {
+																$(
+																		"#boardCategory>li")
+																		.removeClass(
+																				'active');
+																$(this)
+																		.addClass(
+																				"active");
+																category = $(
+																		this)
+																		.text();
+																$
+																		.ajax({
+																			url : "/erp/board/ajax/list.do",
+																			type : "get",
+																			data : {
+																				"category" : category
+																			},
+																			success : function(
+																					data) {
+																				/* 	<tr>
+																						<td class="boardContent" style=""><a
+									href="/erp/board/read.do/${board.board_no}/read">${board.title }</a></td>
+																						<td class="boardDate" style="">${board.write_date}</td>
+																					</tr> */
+																				printdata = "";
+																				for (var i = 0; i < data.length; i++) {
+																					printdata += '<tr><td class="boardContent" style=""><a href="/erp/board/read.do/'+data[i].board_no+'/read">'
+																							+ data[i].title
+																							+ '</a></td><td class="boardDate" style="">'
+																							+ data[i].write_date
+																							+ '</td></tr>';
+
+																				}
+																				$(
+																						"#mydatalist")
+																						.empty();
+																				console
+																						.log(printdata);
+																				$(
+																						"#mydatalist")
+																						.append(
+																								printdata);
+																			},
+																			error : error_run
+
+																		})
+
+															})
+
+										})
+					})
+	function error_run(obj, msg, statusMsg) {
+		alert("오류발생 === > " + obj + "," + msg + "," + statusMsg);
+	}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -55,7 +121,7 @@
 
 						</div>
 
-						
+
 					</div>
 
 					<!-- Left and right controls -->
@@ -75,30 +141,21 @@
 					style="border-color: #edeef1; height: 300px; width: 450px">
 					<div class="panel-footer">사내소식</div>
 					<div class="panel-body">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#">최근게시판</a></li>
-							<li><a href="#">업무공지</a></li>
+						<ul class="nav nav-tabs" id="boardCategory">
+							<li class="active"><a href="#">게시판</a></li>
+							<li><a href="#">사내소식</a></li>
 							<li><a href="#">경조사</a></li>
 						</ul>
 						<div id="boardMain" style="padding-top: 20px; padding-left: 10px">
-							<table>
-								<tr>
-									<td class="boardContent" style="">mini프로젝트 개최</td>
-									<td class="boardDate" style="">2023.5.30</td>
-								</tr>
-								<tr>
-									<td class="boardContent" style="">kimsaemERP ver2.0출시</td>
-									<td class="boardDate" style="">2023.5.29</td>
-								</tr>
-								<tr class="boardRow">
-									<td class="boardContent">사옥 이전날짜 확정</td>
-									<td class="boardDate">2023.06.11</td>
-								</tr>
-								<tr class="boardRow">
-									<td class="boardContent">보안의 날 참석 인원 확정</td>
-									<td class="boardDate">2023.6.11</td>
-								</tr>
-							
+							<table id="mydatalist">
+								<c:forEach var="board" items="${boardlist}">
+									<tr>
+										<td class="boardContent" style=""><a
+											href="/erp/board/read.do/${board.board_no}/read">${board.title }</a></td>
+										<td class="boardDate" style="">${board.write_date}</td>
+									</tr>
+								</c:forEach>
+
 							</table>
 						</div>
 					</div>
