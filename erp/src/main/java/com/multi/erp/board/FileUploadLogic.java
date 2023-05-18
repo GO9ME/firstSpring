@@ -36,19 +36,17 @@ public class FileUploadLogic {
 
 	}
 
-	public MemberDTO uploadFile(MultipartFile multipartFile, String path) throws IllegalStateException, IOException {
-		MemberDTO filedto = new MemberDTO();
+	public MemberDTO uploadFile(MultipartFile multipartFile, String path, MemberDTO member) throws IllegalStateException, IOException {
 
-		if (!multipartFile.isEmpty()) {
-			String originalFilename = multipartFile.getOriginalFilename();
-			// 서버에서 식별할 수 있도록 파일명을 변경
-			String storeFilename = createStoreFilename(originalFilename);
-			// File객체를 실제 경로에 저장
-			multipartFile.transferTo(new File(path + File.separator + storeFilename));
-			filedto.setUserImage(multipartFile);
-		}
-
-		return filedto;
+		String originalFilename = multipartFile.getOriginalFilename();
+		// 서버에서 식별할 수 있도록 파일명을 변경
+		String storeFilename = createStoreFilename(originalFilename);
+		// File객체를 실제 경로에 저장
+		multipartFile.transferTo(new File(path + File.separator + storeFilename));
+		
+		member.setProfile_photo(storeFilename);
+		
+		return member;
 
 	}
 

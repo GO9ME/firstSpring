@@ -26,8 +26,8 @@
 
 				},
 				error : error_run
-			})
-		})
+			}) // ajax
+		}) // click
 		// id 중복체크
 		$('#id').keyup(function() {
 			$.ajax({

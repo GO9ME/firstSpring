@@ -1,23 +1,28 @@
 package com.multi.erp.member;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.multi.erp.board.FileUploadLogic;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	MemberDAO dao;
+	FileUploadLogic fileuploadservice;
 
 	public MemberServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Autowired
-	public MemberServiceImpl(MemberDAO dao) {
+	public MemberServiceImpl(MemberDAO dao, FileUploadLogic fileuploadservice) {
 		super();
 		this.dao = dao;
+		this.fileuploadservice = fileuploadservice;
 	}
 
 	@Override
@@ -29,7 +34,14 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insert(MemberDTO user, MultipartFile file, String realpath, String filename) {
 		// TODO Auto-generated method stub
-		return dao.insert(user);
+		int result = 0;
+		try {
+			result = dao.insert(fileuploadservice.uploadFile(file, realpath, user));
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result; 
 	}
 
 	@Override

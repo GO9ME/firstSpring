@@ -28,17 +28,17 @@ public class MemberController {
 
 	DeptService deptService;
 
-	FileUploadLogic fileuploadservice;
+	
+
 	public MemberController() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Autowired
-	public MemberController(MemberService service, DeptService deptService, FileUploadLogic fileuploadservice) {
+	public MemberController(MemberService service, DeptService deptService) {
 		super();
 		this.service = service;
 		this.deptService = deptService;
-		this.fileuploadservice = fileuploadservice;
 	}
 
 	@RequestMapping("/insert")
@@ -47,8 +47,6 @@ public class MemberController {
 		String view = "member/register";
 		return view;
 	}
-
-	
 
 	@RequestMapping("/login.do")
 	public String getLoginVeiw() {
@@ -96,12 +94,12 @@ public class MemberController {
 		return deptlist;
 	}
 
-	@RequestMapping(value="/checkId",  produces = "application/text; charset=UTF-8")
+	@RequestMapping(value = "/checkId", produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String checkId(String id) {
 		String msg = "";
 		boolean flag = service.idCheck(id);
-		System.out.println("flag : " +flag);
+		System.out.println("flag : " + flag);
 		if (flag) {
 			msg = "사용불가능아이디";
 		} else {
@@ -109,14 +107,14 @@ public class MemberController {
 		}
 		return msg;
 	}
-	
+
 	@PostMapping("/insert.do")
 	public String write(MemberDTO member, HttpSession session) throws IllegalStateException, IOException {
 		System.out.println("member : " + member);
-		MultipartFile file= member.getUserImage();
+		MultipartFile file = member.getUserImage();
 		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
-		MemberDTO memberdto = fileuploadservice.uploadFile(file, path);
-		service.insert(memberdto, file, path, file.getOriginalFilename());
-		return "redirect:/erp/index.do"; // 컨트롤러 요청 재지정
+		
+		service.insert(member, file, path, file.getOriginalFilename());
+		return "redirect:/index.do"; // 컨트롤러 요청 재지정
 	}
 }
