@@ -73,19 +73,4 @@ local.properties
 # Spring Boot Tooling
 .sts4-cache/
 
-# End of https://www.toptal.com/developers/gitignore/api/eclipse
-erp/target/classes/test/json/JSONMakerTest.class
-erp/target/classes/test/json/JSONParserExam.class
-erp/target/classes/test/json/JSONParserTest.class
-erp/target/classes/test/json/myjson.json
-erp/target/classes/test/json/myjson2.json
-erp/target/classes/com/multi/erp/board/BoardFileDTO.class
-erp/target/classes/com/multi/erp/board/FileUploadLogic.class
-erp/target/classes/com/multi/erp/member/MemberController.class
-erp/target/classes/com/multi/erp/member/MemberDAO.class
-erp/target/classes/com/multi/erp/member/MemberDAOImpl.class
-erp/target/classes/com/multi/erp/member/MemberDTO.class
-erp/target/classes/com/multi/erp/member/MemberService.class
-erp/target/classes/com/multi/erp/member/MemberServiceImpl.class
-erp/target/classes/mapper/member.xml
-erp/target/classes/test/json/JSONMakerExam.class
+target/

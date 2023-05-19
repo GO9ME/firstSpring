@@ -40,11 +40,11 @@ public class FileUploadLogic {
 
 		String originalFilename = multipartFile.getOriginalFilename();
 		// 서버에서 식별할 수 있도록 파일명을 변경
-		String storeFilename = createStoreFilename(originalFilename);
+		//String storeFilename = createStoreFilename(originalFilename);
 		// File객체를 실제 경로에 저장
-		multipartFile.transferTo(new File(path + File.separator + storeFilename));
+		multipartFile.transferTo(new File(path + File.separator + originalFilename));
 		
-		member.setProfile_photo(storeFilename);
+		member.setProfile_photo(originalFilename);
 		
 		return member;
 
