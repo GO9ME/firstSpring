@@ -25,4 +25,10 @@
 		#{gender},null,null,null,sysdate(),null,#{deptno},null,#{zipcode},#{addr},#{detailaddr},
 		#{phonehome},#{phoneco},#{phonecell},#{email},#{profile_photo})
 	</insert>
+	<select id="selectTree" resultType="tree">
+		SELECT d.deptname, m.name 
+		FROM dept d 
+		JOIN member2 m 
+		ON d.deptno = m.deptno
+	</select>
 </mapper>

@@ -13,6 +13,7 @@ public interface MemberDAO {
 	MemberDTO login(MemberDTO loginUser);
 	boolean idCheck(String id);
 	MemberDTO findById(String id);
+	List<TreeDTO> selectTree();
 }
 
 

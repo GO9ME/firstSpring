@@ -79,5 +79,10 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<TreeDTO> selectTree(){
+		return sqlSession.selectList("com.multi.erp.member.selectTree");
+	}
 
 }

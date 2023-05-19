@@ -26,6 +26,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int insert(MemberDTO usr) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public List<MemberDTO> getTreeEmpList(String deptno) {
 		// TODO Auto-generated method stub
 		return null;
@@ -41,7 +47,7 @@ public class MemberServiceImpl implements MemberService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return result; 
+		return result;
 	}
 
 	@Override
@@ -92,6 +98,12 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("menu path : " + menupath);
 		}
 		return user;
+	}
+	
+	@Override
+	public List<TreeDTO> selectTree(){
+		List<TreeDTO> list = dao.selectTree();
+		return list;
 	}
 
 }

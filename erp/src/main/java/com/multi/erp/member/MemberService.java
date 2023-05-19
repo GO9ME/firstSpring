@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface MemberService {
 	List<MemberDTO> getTreeEmpList(String deptno);
+	int insert(MemberDTO usr);
 	int insert(MemberDTO user,MultipartFile file,String realpath,String filename);
 	public boolean idCheck(String id);
 	List<MemberDTO> getMemberList();
@@ -15,4 +16,5 @@ public interface MemberService {
 					,String pass);
 	int update(MemberDTO user);
 	MemberDTO login(MemberDTO loginUser);
+	List<TreeDTO> selectTree();
 }
