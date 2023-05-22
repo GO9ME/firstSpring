@@ -20,10 +20,10 @@
 				data : {
 					"job_category" : $(this).find('div').attr('value')
 				},
-				success : function (data){
+				success : function(data) {
 					console.log(data);
 				},
-				
+
 				error : error_run
 			})
 		})
@@ -36,36 +36,24 @@
 </script>
 </head>
 <body>
-	<h2>조직도</h2>
-	<ul id="browser" class="filetree">
-		<c:forEach var="dto" items="${joblist}">
-			<li class="expandable">
-				<div class="hitarea expandable-hitarea" value=${dto.job_id}></div> <span
-				class="folder">${dto.job_category}</span>
-			</li>
+	<h1 id="banner">
+		<a href="http://bassistance.de/jquery-plugins/jquery-plugin-treeview/">jQuery
+			Treeview Plugin</a> Demo
+	</h1>
+	<div id="main">
+		<h4>조직도</h4>
+		<ul id="browser" class="filetree">
+		<c:forEach var="dept" items="${deptlist }">
+			<c:if test="${dept.deptlevel==1 }">
+				<li class="closed">
+					<span class="folder">${dept.deptname}</span>
+					<ul id="${dept.deptno }">
+						<!-- <li><span class="file">Item 1.1</span></li> -->
+					</ul>
+				</li>
+			</c:if>
 		</c:forEach>
-		<!-- <li><span class="folder">Folder 1</span>
-			<ul>
-				<li><span class="file">Item 1.1</span></li>
-			</ul></li>
-		<li><span class="folder">Folder 2</span>
-			<ul>
-				<li><span class="folder">Subfolder 2.1</span>
-					<ul id="folder21">
-						<li><span class="file">File 2.1.1</span></li>
-						<li><span class="file">File 2.1.2</span></li>
-					</ul></li>
-				<li><span class="file">File 2.2</span></li>
-			</ul></li>
-		<li class="closed"><span class="folder">Folder 3 (closed
-				at start)</span>
-			<ul>
-				<li><span class="file">File 3.1</span></li>
-			</ul></li>
-		<li><span class="file">File 4</span></li>-->
-	</ul>
+		</ul>
+	</div>
 </body>
-<script src="/erp/common/js/jquery.cookie.js"></script>
-<script src="/erp/common/js/jquery.treeview.js"></script>
-<script src="/erp/common/js/demo.js"></script>
 </html>

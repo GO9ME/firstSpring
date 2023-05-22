@@ -148,8 +148,10 @@ public class MemberController {
 
 	@RequestMapping("/dept/tree.do")
 	public String deptView(Model model) {
-		List<JobDTO> joblist = service.selectJob();
+//		List<JobDTO> joblist = service.selectJob();
+		List<DeptDTO> joblist = deptService.select();
 		model.addAttribute("joblist", joblist);
+		System.out.println(joblist);
 		return "dept/tree";
 	}
 
