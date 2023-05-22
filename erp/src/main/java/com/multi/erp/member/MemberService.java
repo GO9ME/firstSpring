@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.multi.erp.dept.DeptDTO;
+
 public interface MemberService {
 	List<MemberDTO> getTreeEmpList(String deptno);
 	int insert(MemberDTO usr);
@@ -16,5 +18,7 @@ public interface MemberService {
 					,String pass);
 	int update(MemberDTO user);
 	MemberDTO login(MemberDTO loginUser);
-	List<TreeDTO> selectTree();
+	List<JobDTO> selectJob();
+	List<DeptDTO> selectDeptname(String job_category);
+
 }

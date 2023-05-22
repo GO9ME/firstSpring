@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,32 +8,25 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/erp/common/css/jquery.treeview.css" />
 <link rel="stylesheet" href="/erp/common/css/screen.css" />
-<script src="/erp/common/js/jquery.cookie.js"></script>
-<script src="/erp/common/js/jquery.treeview.js"></script>
-<!-- <script src="/erp/common/js/demo.js"></script> -->
+
 
 <script type="text/javascript">
-
 	$(function() {
 		// 리스트 쭉 가져오기
-		$.ajax({
-			url : "/erp/emp/selectTree",
-			type : "get",
-			dataType : "json",
-			success : function(data) {
-				console.log(data);
-				// 필요한 데이터만 추출합니다.
-				for (key in data) {
-					console.log(data[key]);
-				}
-				$("#browser").treeview({
-					data : data,
-				    collapsed: true
-				});
-			},
-			error : error_run
+		$('#browser>li').click(function() {
+			$.ajax({
+				url : "/erp/emp/selectDeptname",
+				type : "get",
+				data : {
+					"job_category" : $(this).find('div').attr('value')
+				},
+				success : function(data) {
+					console.log(data);
+				},
 
-		}) // ajax selectCode
+				error : error_run
+			})
+		})
 
 	}) //ready
 
@@ -42,6 +36,7 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<h2>조직도</h2>
 	<ul id="browser" class="filetree">
 		
@@ -65,5 +60,26 @@
 			</ul></li>
 		<li><span class="file">File 4</span></li>  -->
 	</ul>
+=======
+	<h1 id="banner">
+		<a href="http://bassistance.de/jquery-plugins/jquery-plugin-treeview/">jQuery
+			Treeview Plugin</a> Demo
+	</h1>
+	<div id="main">
+		<h4>조직도</h4>
+		<ul id="browser" class="filetree">
+		<c:forEach var="dept" items="${deptlist }">
+			<c:if test="${dept.deptlevel==1 }">
+				<li class="closed">
+					<span class="folder">${dept.deptname}</span>
+					<ul id="${dept.deptno }">
+						<!-- <li><span class="file">Item 1.1</span></li> -->
+					</ul>
+				</li>
+			</c:if>
+		</c:forEach>
+		</ul>
+	</div>
+>>>>>>> 0af8feecbf640dd0ef7bba820aacdf15b11e6193
 </body>
 </html>
