@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.multi.erp.dept.DeptDTO;
+
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	SqlSession sqlSession;
@@ -81,8 +83,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
-	public List<TreeDTO> selectTree(){
-		return sqlSession.selectList("com.multi.erp.member.selectTree");
+	public List<JobDTO> selectJob(){
+		return sqlSession.selectList("com.multi.erp.member.selectJob");
 	}
-
+	@Override
+	public List<DeptDTO> selectDeptname(String job_category){
+		return sqlSession.selectList("com.multi.erp.member.selectDeptname", job_category);
+	}
 }

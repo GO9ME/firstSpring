@@ -25,10 +25,16 @@
 		#{gender},null,null,null,sysdate(),null,#{deptno},null,#{zipcode},#{addr},#{detailaddr},
 		#{phonehome},#{phoneco},#{phonecell},#{email},#{profile_photo})
 	</insert>
-	<select id="selectTree" resultType="tree">
-		SELECT d.deptname, m.name 
-		FROM dept d 
-		JOIN member2 m 
-		ON d.deptno = m.deptno
+	<select id="selectJob" resultType="job">
+		SELECT *
+		FROM job;
+	</select>
+
+	<select id="selectDeptname" parameterType="String" resultType="dept">
+		SELECT d.*
+		FROM dept d
+		JOIN job j
+		ON d.job_category = j.job_id
+		WHERE d.job_category = #{job_category}
 	</select>
 </mapper>

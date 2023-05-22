@@ -2,6 +2,8 @@ package com.multi.erp.member;
 
 import java.util.List;
 
+import kr.multi.erp.dept.DeptDTO;
+
 public interface MemberDAO {
 	List<MemberDTO> getTreeEmpList(String deptno);
 	int insert(MemberDTO user);
@@ -13,7 +15,8 @@ public interface MemberDAO {
 	MemberDTO login(MemberDTO loginUser);
 	boolean idCheck(String id);
 	MemberDTO findById(String id);
-	List<TreeDTO> selectTree();
+	List<JobDTO> selectJob();
+	List<DeptDTO> selectDeptname(String job_category);
 }
 
 

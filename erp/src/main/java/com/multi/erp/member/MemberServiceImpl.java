@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.erp.board.FileUploadLogic;
 
+import kr.multi.erp.dept.DeptDTO;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	MemberDAO dao;
@@ -100,10 +102,14 @@ public class MemberServiceImpl implements MemberService {
 		return user;
 	}
 	
+	@Override 
+	public List<JobDTO> selectJob(){
+		return dao.selectJob();
+	}
+	
 	@Override
-	public List<TreeDTO> selectTree(){
-		List<TreeDTO> list = dao.selectTree();
-		return list;
+	public List<DeptDTO> selectDeptname(String job_category){
+		return dao.selectDeptname(job_category);
 	}
 
 }
