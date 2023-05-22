@@ -147,16 +147,20 @@ public class MemberController {
 	}
 
 	@RequestMapping("/dept/tree.do")
-	public String deptView() {
+	public String deptView(Model model) {
+//		List<JobDTO> joblist = service.selectJob();
+		List<DeptDTO> joblist = deptService.select();
+		model.addAttribute("joblist", joblist);
+		System.out.println(joblist);
 		return "dept/tree";
 	}
 
-	@RequestMapping(value = "/selectTree", produces = "application/json; charset=UTF-8")
+	@RequestMapping(value = "/selectDeptname", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public List<TreeDTO> selectTree() {
+	public List<DeptDTO> selectTree(String job_category) {
 
-		List<TreeDTO> tree = service.selectTree();
-		return tree;
+		List<DeptDTO> dept = service.selectDeptname(job_category);
+		return dept;
 	}
 
 }

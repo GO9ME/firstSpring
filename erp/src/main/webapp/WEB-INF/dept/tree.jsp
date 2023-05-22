@@ -44,6 +44,7 @@
 <body>
 	<h2>조직도</h2>
 	<ul id="browser" class="filetree">
+		
 		<!-- 		 <li><span class="folder">Folder 1</span>
 			<ul>
 				<li><span class="file">Item 1.1</span></li>

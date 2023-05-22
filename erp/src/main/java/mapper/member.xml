@@ -25,6 +25,11 @@
 		#{gender},null,null,null,sysdate(),null,#{deptno},null,#{zipcode},#{addr},#{detailaddr},
 		#{phonehome},#{phoneco},#{phonecell},#{email},#{profile_photo})
 	</insert>
+	<select id="treedata">
+		SELECT * 
+		FROM member2 
+		WHERE deptno=#{deptno}
+	</select>
 	<select id="selectTree" resultType="tree">
 		SELECT d.deptname, m.name 
 		FROM dept d 

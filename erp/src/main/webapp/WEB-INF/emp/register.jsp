@@ -32,7 +32,7 @@
 		$('#id').keyup(function() {
 			$.ajax({
 				url : "/erp/emp/checkId",
-				type : "post",
+				type : "get",
 				data : {
 					"id" : $('#id').val()
 				},
