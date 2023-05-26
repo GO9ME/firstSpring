@@ -18,6 +18,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.multi.erp.dept.DeptDTO;
 import kr.multi.erp.dept.DeptService;
 
@@ -149,18 +152,30 @@ public class MemberController {
 	@RequestMapping("/dept/tree.do")
 	public String deptView(Model model) {
 //		List<JobDTO> joblist = service.selectJob();
-		List<DeptDTO> joblist = deptService.select();
-		model.addAttribute("joblist", joblist);
-		System.out.println(joblist);
+		List<DeptDTO> deptlist = deptService.select();
+		model.addAttribute("deptlist", deptlist);
+		System.out.println(deptlist);
 		return "dept/tree";
 	}
 
-	@RequestMapping(value = "/selectDeptname", produces = "application/json; charset=UTF-8")
+	@RequestMapping(value = "/ajaxtreedata", produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public List<DeptDTO> selectTree(String job_category) {
+	public String getTreedata(String deptno) throws JsonProcessingException {
 
-		List<DeptDTO> dept = service.selectDeptname(job_category);
-		return dept;
+		List<DeptDTO> deptlist = deptService.getSubDeptlist(deptno);
+		List<MemberDTO> memberlist = service.getTreeEmpList(deptno);
+				
+		//Java 객체 ---> JSON 변경
+		TreeDataDTO treedto = new TreeDataDTO(memberlist, deptlist);
+		// 자바 객체를 JSON문자열로 변경하기 위해서 Jackson 라이브러리에서 지원하는 ObjectMapper를 직접 사용
+		ObjectMapper mapper = new ObjectMapper();
+		//writeValue (변환하기 위한 JSON형식파일, 변환할 객체)
+		//writeValueAsString(변환할 객체 - DTO) - 자바객체를 JSON문자열로 변경
+		String jsonString = mapper.writeValueAsString(treedto);
+		System.out.println("===============================");
+		System.out.println(jsonString);
+		System.out.println("===============================");
+		return jsonString;
 	}
 
 }

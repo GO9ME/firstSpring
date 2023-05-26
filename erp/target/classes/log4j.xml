@@ -16,6 +16,10 @@
 	<logger name="com.multi.erp">
 		<level value="trace" />
 	</logger>
+		<!-- Application Loggers -->
+	<logger name="kr.multi.erp">
+		<level value="trace" />
+	</logger>
 
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
